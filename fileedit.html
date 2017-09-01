@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>File Edit</title>
+        <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+        
+    </head>
+    <body>
+            <input type="button" value="Upload" onclick="showPicker()" />
+            <a id="download"> Show Uploaded Image..... </a>
+            
+            <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+            <script>
+                var client = filestack.init('AJICGLENSTVagnjSOvyZnz');
+                function showPicker() {
+                    client.pick({
+                        accept: 'image/*',
+                        maxFiles: 1,
+                    }).then(function(result) {
+                    //console.log(JSON.stringify(result));
+                    //console.log(result.filesUploaded[0].url);
+                    var source=result.filesUploaded[0].url;
+                   document.getElementById("download").setAttribute("href",source);
+                    });
+                    
+                }
+            </script>
+            
+    </body>
+</html>
